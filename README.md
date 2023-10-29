@@ -10,4 +10,4 @@ tecnicatura en desarrollo web
  jose maria rotter
 
  # integrantes del grupo
- Acuña Tomas Nahuel fai-2510
+ **Acuña Tomas Nahuel fai-2510 tomas.acua@est.fi.uncoma.edu.ar TomasAcuna**
