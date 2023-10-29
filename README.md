@@ -10,5 +10,5 @@ juego wordix desarrollado en introducción a la programación (fai)
  Jose Maria Rotter
 
  # integrantes del grupo
- **Acuña Tomas Nahuel** fai-2510 tomas.acua@est.fi.uncoma.edu.ar TomasAcuna
-
+ **Acuña Tomas Nahuel** Legajo: fai-2510 - Email: tomas.acua@est.fi.uncoma.edu.ar - Github: TomasAcuna
+ **Facudno Ezequiel Garcia** Legajo: FAI-2911 - Email: facundo.garcia@est.fi.uncoma.edu.ar - Github:FacuGarcia05
