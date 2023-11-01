@@ -384,7 +384,7 @@ function jugarWordix($palabraWordix, $nombreUsuario)
     if ($ganoElIntento) {
         $nroIntento--;
         $puntaje = obtenerPuntajeWordix($nroIntento, $palabraIntento);
-        echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos!";
+        echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos!\n";
     } else {
         $nroIntento = 0; //reset intento
         $puntaje = 0;
@@ -413,6 +413,7 @@ function cargarPartidas(){
         $partida09 = [ "palabraWordix" => "RATON", "jugador" => "Tomi", "intentos" => 4, "puntaje" => 14],
         $partida10 = [ "palabraWordix" => "PIANO", "jugador" => "Cristian", "intentos" => 6, "puntaje" => 0],
     ];
+    return $ejemploPartidas;
 }
 function seleccionarOpcion(){
     do{
@@ -427,7 +428,6 @@ function seleccionarOpcion(){
         echo "7) Agregar una palabra de 5 letras a Wordix\n";
         echo "8) Salir\n";
     
-        // Solicitar la opción al usuario
         echo "Ingrese su opción: ";
         $opcion = trim(fgets(STDIN));
 

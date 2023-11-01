@@ -47,26 +47,23 @@ function cargarColeccionPalabras()
 
 
 //Proceso:
+$palabrasWordix=cargarColeccionPalabras();
 do {
-    // Mostrar el menú de opciones
-    echo "Menú de opciones:\n";
-    echo "1) Jugar al wordix con una palabra elegida\n";
-    echo "2) Jugar al wordix con una palabra aleatoria\n";
-    echo "3) Mostrar una partida\n";
-    echo "4) Mostrar la primer partida ganadora\n";
-    echo "5) Mostrar resumen de Jugador\n";
-    echo "6) Mostrar listado de partidas ordenadas por jugador y por palabra\n";
-    echo "7) Agregar una palabra de 5 letras a Wordix\n";
-    echo "8) Salir\n";
-
-    // Solicitar la opción al usuario
-    echo "Ingrese su opción: ";
-    $opcion = trim(fgets(STDIN));
+    $opcion = seleccionarOpcion();
 
     switch ($opcion) {
         case 1:
             // Implementar la lógica para jugar con una palabra elegida
-            // ...
+            echo"ingrese su nombre\n";
+            $nombreJugador = trim(fgets(STDIN));
+            echo"ingrese el numero de palabra para jugar\n";
+            $numeroElejido =trim(fgets(STDIN)) -1 ;
+            $totalPalabrasWordix = count($palabrasWordix);
+            if ($numeroElejido>=0 && $numeroElejido < $totalPalabrasWordix){
+                $palabraAdivinar = $palabrasWordix[$numeroElejido];
+                jugarWordix($palabraAdivinar, $nombreJugador) ;
+            }else{
+                echo"OJO, tiene que ingresar un valor entre 1 y $totalPalabrasWordix \n";}
             break;
         case 2:
             // Implementar la lógica para jugar con una palabra aleatoria
@@ -98,8 +95,9 @@ do {
         default:
             echo "Opción no válida. Por favor, ingrese una opción válida.\n";
     }
+ }while ($opcion!= 8);
 
-} while ($opcion != 8);
+
 
 $partida = jugarWordix("MELON", strtolower("MaJo"));
 //print_r($partida);
