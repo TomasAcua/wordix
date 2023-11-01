@@ -48,6 +48,7 @@ function cargarColeccionPalabras()
 
 //Proceso:
 $palabrasWordix=cargarColeccionPalabras();
+$palabrasUtilizadas=[];
 do {
     $opcion = seleccionarOpcion();
 
@@ -64,10 +65,25 @@ do {
                 jugarWordix($palabraAdivinar, $nombreJugador) ;
             }else{
                 echo"OJO, tiene que ingresar un valor entre 1 y $totalPalabrasWordix \n";}
+                $palabrasUtilizadas[] = $palabraAdivinar;
             break;
         case 2:
             // Implementar la lógica para jugar con una palabra aleatoria
-            // ...
+            echo "Ingrese su nombre: ";
+            $nombreJugador = trim(fgets(STDIN));
+                if (count($palabrasUtilizadas) === count($palabrasWordix)) {
+                     echo "Todas las palabras ya se han utilizado en juegos anteriores.\n";
+                 } else { 
+                 do {
+                   $indiceAleatorio = array_rand($palabrasWordix);
+                 } while (in_array($indiceAleatorio, $palabrasUtilizadas)); // Evitar palabras ya utilizadas
+
+                     $palabraAleatoria = $palabrasWordix[$indiceAleatorio];
+                    
+                     $palabrasUtilizadas[] = $indiceAleatorio;//esto esta mal, hay que hacer un arreglo por jugador o chequear antes
+
+                    jugarWordix($palabraAleatoria, $nombreJugador);
+                  }
             break;
         case 3:
             // Implementar la lógica para mostrar una partida específica
