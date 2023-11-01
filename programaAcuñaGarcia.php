@@ -46,6 +46,18 @@ function cargarColeccionPalabras()
 
 
 //Proceso:
+echo("***************************************************************\n
+Elija una de las siguientes opciones para continuar (1-8)\n
+***************************************************************\n
+1) Jugar al wordix con una palabra elegida\n
+2) Jugar al wordix con una palabra aleatoria\n
+3) Mostrar una partida\n
+4) Mostrar la primer partida ganadora\n
+5) Mostrar resumen de Jugador\n
+6) Mostrar listado de partidas ordenadas por jugador y por palabra\n
+7) Agregar una palabra de 5 letras a Wordix\n
+8) Salir\n
+***************************************************************\n");
 
 $partida = jugarWordix("MELON", strtolower("MaJo"));
 //print_r($partida);
