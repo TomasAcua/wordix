@@ -7,8 +7,9 @@ include_once("wordix.php");
 /***** DATOS DE LOS INTEGRANTES *******/
 /**************************************/
 
-/* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
-/* ****COMPLETAR***** */
+/*# integrantes del grupo
+**Acuña Tomas Nahuel** Legajo: fai-2510 - Email: tomas.acua@est.fi.uncoma.edu.ar - Github: TomasAcuna
+**Facudno Ezequiel Garcia** Legajo: FAI-2911 - Email: facundo.garcia@est.fi.uncoma.edu.ar - Github:FacuGarcia05/*
 
 
 /**************************************/
@@ -24,8 +25,8 @@ function cargarColeccionPalabras()
     $coleccionPalabras = [
         "MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
         "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
-        "VERDE", "MELON", "YUYOS", "PIANO", "PISOS"
-        /* Agregar 5 palabras más */
+        "VERDE", "MELON", "YUYOS", "PIANO", "PISOS",
+        "SILLA", "LAPIZ", "BRUMA", "RATON", "CABLE",
     ];
 
     return ($coleccionPalabras);
@@ -46,6 +47,7 @@ function cargarColeccionPalabras()
 
 
 //Proceso:
+
 echo("***************************************************************\n
 Elija una de las siguientes opciones para continuar (1-8)\n
 ***************************************************************\n
@@ -57,7 +59,7 @@ Elija una de las siguientes opciones para continuar (1-8)\n
 6) Mostrar listado de partidas ordenadas por jugador y por palabra\n
 7) Agregar una palabra de 5 letras a Wordix\n
 8) Salir\n
-***************************************************************\n");
+***************************************************************\n"); 
 
 $partida = jugarWordix("MELON", strtolower("MaJo"));
 //print_r($partida);
