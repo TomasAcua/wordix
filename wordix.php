@@ -400,3 +400,43 @@ function jugarWordix($palabraWordix, $nombreUsuario)
 
     return $partida;
 }
+function cargarPartidas(){
+    $ejemploPartidas = [
+        $partida01 = [ "palabraWordix" => "QUESO", "jugador" => "Emilia",  "intentos" => 0, "puntaje" => 0],
+        $partida02 = [ "palabraWordix" => "CASAS", "jugador" => "Adriano", "intentos" => 3, "puntaje" => 14],
+        $partida03 = [ "palabraWordix" => "MUJER", "jugador" => "Facu", "intentos" => 2, "puntaje" => 13],
+        $partida04 = [ "palabraWordix" => "VERDE", "jugador" => "Eva", "intentos" => 2, "puntaje" => 15],
+        $partida05 = [ "palabraWordix" => "GATOS", "jugador" => "Tomi", "intentos" => 5, "puntaje" => 12],
+        $partida06 = [ "palabraWordix" => "SILLA", "jugador" => "Agus", "intentos" => 1, "puntaje" => 15],
+        $partida07 = [ "palabraWordix" => "LAPIZ", "jugador" => "Ludmi", "intentos" => 4, "puntaje" => 13],
+        $partida08 = [ "palabraWordix" => "BRUMA", "jugador" => "Facu", "intentos" => 5, "puntaje" => 11],
+        $partida09 = [ "palabraWordix" => "RATON", "jugador" => "Tomi", "intentos" => 4, "puntaje" => 14],
+        $partida10 = [ "palabraWordix" => "PIANO", "jugador" => "Cristian", "intentos" => 6, "puntaje" => 0],
+    ];
+}
+function seleccionarOpcion(){
+    do{
+        // Mostrar el menú de opciones
+        echo "Menú de opciones:\n";
+        echo "1) Jugar al wordix con una palabra elegida\n";
+        echo "2) Jugar al wordix con una palabra aleatoria\n";
+        echo "3) Mostrar una partida\n";
+        echo "4) Mostrar la primer partida ganadora\n";
+        echo "5) Mostrar resumen de Jugador\n";
+        echo "6) Mostrar listado de partidas ordenadas por jugador y por palabra\n";
+        echo "7) Agregar una palabra de 5 letras a Wordix\n";
+        echo "8) Salir\n";
+    
+        // Solicitar la opción al usuario
+        echo "Ingrese su opción: ";
+        $opcion = trim(fgets(STDIN));
+
+        $opcionValida = false;
+        if($opcion >= 1 && $opcion <= 8){
+            $opcionValida = true; 
+        } else{
+            echo("Por favor, seleccione una opcion valida (1 al 8)");
+        }
+    }while($opcionValida = false);
+    return $opcion;
+}
