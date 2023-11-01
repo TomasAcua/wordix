@@ -336,7 +336,7 @@ function esIntentoGanado($estructuraPalabraIntento)
  * @param string $palabraIntento Palabra intento del jugador en mayúsculas.
  * @return int Puntaje obtenido en el intento.
  */
-function obtenerPuntajeWordix($nroIntento, $palabraIntento)  /* ****COMPLETAR***** parámetros formales necesarios */
+function obtenerPuntajeWordix($nroIntento, $palabraIntento)  
 { $puntaje= 7-$nroIntento;
     $puntajesLetras = [
         'A' => 1, 'E' => 1, 'I' => 1, 'O' => 1, 'U' => 1,
@@ -347,7 +347,7 @@ function obtenerPuntajeWordix($nroIntento, $palabraIntento)  /* ****COMPLETAR***
             $puntaje = $puntaje + $puntajesLetras[$letra];
         }
 
-    /* ****COMPLETAR***** cuerpo de la función*/
+    
     return $puntaje ;
 }
 
