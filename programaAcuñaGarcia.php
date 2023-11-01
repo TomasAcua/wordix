@@ -47,19 +47,59 @@ function cargarColeccionPalabras()
 
 
 //Proceso:
+do {
+    // Mostrar el menú de opciones
+    echo "Menú de opciones:\n";
+    echo "1) Jugar al wordix con una palabra elegida\n";
+    echo "2) Jugar al wordix con una palabra aleatoria\n";
+    echo "3) Mostrar una partida\n";
+    echo "4) Mostrar la primer partida ganadora\n";
+    echo "5) Mostrar resumen de Jugador\n";
+    echo "6) Mostrar listado de partidas ordenadas por jugador y por palabra\n";
+    echo "7) Agregar una palabra de 5 letras a Wordix\n";
+    echo "8) Salir\n";
 
-echo("***************************************************************\n
-Elija una de las siguientes opciones para continuar (1-8)\n
-***************************************************************\n
-1) Jugar al wordix con una palabra elegida\n
-2) Jugar al wordix con una palabra aleatoria\n
-3) Mostrar una partida\n
-4) Mostrar la primer partida ganadora\n
-5) Mostrar resumen de Jugador\n
-6) Mostrar listado de partidas ordenadas por jugador y por palabra\n
-7) Agregar una palabra de 5 letras a Wordix\n
-8) Salir\n
-***************************************************************\n"); 
+    // Solicitar la opción al usuario
+    echo "Ingrese su opción: ";
+    $opcion = trim(fgets(STDIN));
+
+    switch ($opcion) {
+        case 1:
+            // Implementar la lógica para jugar con una palabra elegida
+            // ...
+            break;
+        case 2:
+            // Implementar la lógica para jugar con una palabra aleatoria
+            // ...
+            break;
+        case 3:
+            // Implementar la lógica para mostrar una partida específica
+            // ...
+            break;
+        case 4:
+            // Implementar la lógica para mostrar la primer partida ganadora de un jugador
+            // ...
+            break;
+        case 5:
+            // Implementar la lógica para mostrar el resumen de un jugador
+            // ...
+            break;
+        case 6:
+            // Implementar la lógica para mostrar el listado de partidas ordenadas por jugador y palabra
+            // ...
+            break;
+        case 7:
+            // Implementar la lógica para agregar una palabra de 5 letras a Wordix
+            // ...
+            break;
+        case 8:
+            echo "¡Hasta luego!";
+            break;
+        default:
+            echo "Opción no válida. Por favor, ingrese una opción válida.\n";
+    }
+
+} while ($opcion != 8);
 
 $partida = jugarWordix("MELON", strtolower("MaJo"));
 //print_r($partida);
