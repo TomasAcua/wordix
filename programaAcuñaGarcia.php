@@ -58,10 +58,10 @@ do {
             echo"ingrese su nombre\n";
             $nombreJugador = trim(fgets(STDIN));
             echo"ingrese el numero de palabra para jugar\n";
-            $numeroElejido =trim(fgets(STDIN)) -1 ;
+            $numeroElegido =trim(fgets(STDIN)) -1 ;
             $totalPalabrasWordix = count($palabrasWordix);
-            if ($numeroElejido>=0 && $numeroElejido < $totalPalabrasWordix){
-                $palabraAdivinar = $palabrasWordix[$numeroElejido];
+            if ($numeroElegido>=0 && $numeroElegido < $totalPalabrasWordix){
+                $palabraAdivinar = $palabrasWordix[$numeroElegido];
                 jugarWordix($palabraAdivinar, $nombreJugador) ;
             }else{
                 echo"OJO, tiene que ingresar un valor entre 1 y $totalPalabrasWordix \n";}
