@@ -152,17 +152,18 @@ function esPalabra($cadena)
 }
 
 /**
+ * pide una palabra de cinco letras, si es de cinco letras la retorna sino vuelve a pedir otra
  *  @return string
  */
 function leerPalabra5Letras()
 {
     //string $palabra
-    echo "Ingrese una palabra de 5 letras: ";
+    echo "Ingrese una palabra de 5 letras:\n ";
     $palabra = trim(fgets(STDIN));
     $palabra  = strtoupper($palabra);
 
     while ((strlen($palabra) != 5) || !esPalabra($palabra)) {
-        echo "Debe ingresar una palabra de 5 letras:";
+        echo "Debe ingresar una palabra de 5 letras:  \n";
         $palabra = strtoupper(trim(fgets(STDIN)));
     }
     return $palabra;

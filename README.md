@@ -12,3 +12,5 @@ juego wordix desarrollado en introducción a la programación (fai)
  # integrantes del grupo
  **Acuña Tomas Nahuel** Legajo: fai-2510 - Email: tomas.acua@est.fi.uncoma.edu.ar - Github: TomasAcuna
  **Facundo Ezequiel Garcia** Legajo: FAI-2911 - Email: facundo.garcia@est.fi.uncoma.edu.ar - Github:FacuGarcia05
+ **Juan Ignacio Sastre** Legajo: FAI-4491 - Email: juan.sastre@est.fi.uncoma.edu.ar
+ Github: nasusxd

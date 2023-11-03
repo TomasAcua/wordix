@@ -41,25 +41,26 @@ function cargarColeccionPalabras()
 /**************************************/
 
 //Declaración de variables:
-
+//string nombreJugador, $palabrasAdivinar, $palabraNueva
+//boolean $siPalabra
 
 //Inicialización de variables:
-
-
-//Proceso:
 $palabrasWordix=cargarColeccionPalabras();
 $palabrasUtilizadas=[];
+$siPalabra=false;
+
+//Proceso:
+
 do {
     $opcion = seleccionarOpcion();
-
+    $totalPalabrasWordix = count($palabrasWordix);
     switch ($opcion) {
         case 1:
             // Implementar la lógica para jugar con una palabra elegida
-            echo"ingrese su nombre\n";
+            echo"ingrese su nombre: \n";
             $nombreJugador = trim(fgets(STDIN));
-            echo"ingrese el numero de palabra para jugar\n";
+            echo"ingrese el numero de palabra entre 1 y $totalPalabrasWordix para jugar: \n";
             $numeroElegido =trim(fgets(STDIN)) -1 ;
-            $totalPalabrasWordix = count($palabrasWordix);
             if ($numeroElegido>=0 && $numeroElegido < $totalPalabrasWordix){
                 $palabraAdivinar = $palabrasWordix[$numeroElegido];
                 jugarWordix($palabraAdivinar, $nombreJugador) ;
@@ -69,7 +70,7 @@ do {
             break;
         case 2:
             // Implementar la lógica para jugar con una palabra aleatoria
-            echo "Ingrese su nombre: ";
+            echo "Ingrese su nombre: \n";
             $nombreJugador = trim(fgets(STDIN));
                 if (count($palabrasUtilizadas) === count($palabrasWordix)) {
                      echo "Todas las palabras ya se han utilizado en juegos anteriores.\n";
@@ -102,8 +103,19 @@ do {
             // ...
             break;
         case 7:
-            // Implementar la lógica para agregar una palabra de 5 letras a Wordix
-            // ...
+            // se pide una palabra, si la palabra ya esta dentro de la coleccion se vuevle a pedir otra
+           
+            do{
+                if($siPalabra){
+                    echo "la palabra que ingreso ya esta en la lista\n";
+                }
+            $palabraNueva=leerPalabra5Letras();
+            $siPalabra= in_array($palabraNueva,$palabrasWordix);
+
+            }while($siPalabra);//"in_array" recorre el arreglo y determina si el string esta o no dentro del arreglo
+            $totalPalabrasWordix=count($palabrasWordix);
+            $palabrasWordix[$totalPalabrasWordix]=$palabraNueva;
+            echo "¡¡¡ La palabra a sido agregada exitosamente !!! \n";
             break;
         case 8:
             echo "¡Hasta luego!";
@@ -115,7 +127,7 @@ do {
 
 
 
-$partida = jugarWordix("MELON", strtolower("MaJo"));
+//$partida = jugarWordix("MELON", strtolower("MaJo"));
 //print_r($partida);
 //imprimirResultado($partida);
 
