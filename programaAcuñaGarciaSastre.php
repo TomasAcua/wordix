@@ -41,8 +41,10 @@ function cargarColeccionPalabras()
 /**************************************/
 
 //Declaración de variables:
-//string nombreJugador, $palabrasAdivinar, $palabraNueva
+//string $nombreJugador, $palabraAdivinar, $palabraNueva, $opcion, $palabraAleatoria
+//int $numeroElegido, $totalPalabrasWordix, $indiceAleatorio
 //boolean $siPalabra
+//array $palabrasUtilizadas, $palabraAdivinar, $palabrasUtilizadas, $palabrasWordix
 
 //Inicialización de variables:
 $palabrasWordix=cargarColeccionPalabras();
@@ -65,7 +67,8 @@ do {
                 $palabraAdivinar = $palabrasWordix[$numeroElegido];
                 jugarWordix($palabraAdivinar, $nombreJugador) ;
             }else{
-                echo"OJO, tiene que ingresar un valor entre 1 y $totalPalabrasWordix \n";}
+                echo"OJO, tiene que ingresar un valor entre 1 y $totalPalabrasWordix \n";
+            }
                 $palabrasUtilizadas[] = $palabraAdivinar;
             break;
         case 2:
