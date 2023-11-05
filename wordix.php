@@ -441,3 +441,20 @@ function seleccionarOpcion(){
     }while($opcionValida = false);
     return $opcion;
 }
+/**
+ * Función para verificar si un jugador ya ha jugado con una palabra específica
+ *
+ * @param string $nombre Nombre del jugador
+ * @param string $palabra Palabra Wordix a verificar
+ * @return bool True si el jugador ya jugó con la palabra, False si no
+ */
+function jugadorYaJugoConPalabra($nombre, $palabra) {
+    global $partidasGuardadas;
+    foreach ($partidasGuardadas as $partida) {
+        if ($partida['jugador'] === $nombre && $partida['palabraWordix'] === $palabra) {
+            return true;
+        }
+    }
+
+    return false;
+}
