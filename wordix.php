@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 La librería JugarWordix posee la definición de constantes y funciones necesarias
 para jugar al Wordix.
@@ -402,18 +403,21 @@ function jugarWordix($palabraWordix, $nombreUsuario)
     return $partida;
 }
 function cargarPartidas(){
-    $ejemploPartidas = [
-        $partida01 = [ "palabraWordix" => "QUESO", "jugador" => "Emilia",  "intentos" => 0, "puntaje" => 0],
-        $partida02 = [ "palabraWordix" => "CASAS", "jugador" => "Adriano", "intentos" => 3, "puntaje" => 14],
-        $partida03 = [ "palabraWordix" => "MUJER", "jugador" => "Facu", "intentos" => 2, "puntaje" => 13],
-        $partida04 = [ "palabraWordix" => "VERDE", "jugador" => "Eva", "intentos" => 2, "puntaje" => 15],
-        $partida05 = [ "palabraWordix" => "GATOS", "jugador" => "Tomi", "intentos" => 5, "puntaje" => 12],
-        $partida06 = [ "palabraWordix" => "SILLA", "jugador" => "Agus", "intentos" => 1, "puntaje" => 15],
-        $partida07 = [ "palabraWordix" => "LAPIZ", "jugador" => "Ludmi", "intentos" => 4, "puntaje" => 13],
-        $partida08 = [ "palabraWordix" => "BRUMA", "jugador" => "Facu", "intentos" => 5, "puntaje" => 11],
-        $partida09 = [ "palabraWordix" => "RATON", "jugador" => "Tomi", "intentos" => 4, "puntaje" => 14],
-        $partida10 = [ "palabraWordix" => "PIANO", "jugador" => "Cristian", "intentos" => 6, "puntaje" => 0],
-    ];
+    $ejemploPartidas = [];
+        $partida01 = [ "palabraWordix" => "QUESO", "jugador" => "Emilia",  "intentos" => 0, "puntaje" => 0];
+        $partida02 = [ "palabraWordix" => "CASAS", "jugador" => "Adriano", "intentos" => 3, "puntaje" => 14];
+        $partida03 = [ "palabraWordix" => "MUJER", "jugador" => "Facu", "intentos" => 2, "puntaje" => 13];
+        $partida04 = [ "palabraWordix" => "VERDE", "jugador" => "Eva", "intentos" => 2, "puntaje" => 15];
+        $partida05 = [ "palabraWordix" => "GATOS", "jugador" => "Tomi", "intentos" => 5, "puntaje" => 12];
+        $partida06 = [ "palabraWordix" => "SILLA", "jugador" => "Agus", "intentos" => 1, "puntaje" => 15];
+        $partida07 = [ "palabraWordix" => "LAPIZ", "jugador" => "Ludmi", "intentos" => 4, "puntaje" => 13];
+        $partida08 = [ "palabraWordix" => "BRUMA", "jugador" => "Facu", "intentos" => 5, "puntaje" => 11];
+        $partida09 = [ "palabraWordix" => "RATON", "jugador" => "Tomi", "intentos" => 4, "puntaje" => 14];
+        $partida10 = [ "palabraWordix" => "PIANO", "jugador" => "Cristian", "intentos" => 6, "puntaje" => 0];
+
+        array_push($ejemploPartidas, $partida01, $partida02, $partida03, $partida04, $partida05, $partida06, $partida07, $partida08, $partida09, $partida10);
+        
+    
     return $ejemploPartidas;
 }
 function seleccionarOpcion(){
@@ -449,11 +453,12 @@ function seleccionarOpcion(){
  * @return bool True si el jugador ya jugó con la palabra, False si no
  */
 function jugadorYaJugoConPalabra($nombre, $palabra,$partidasGuardadas) {
- foreach ($partidasGuardadas as $partida) {
-        if ($partida['jugador'] === $nombre && $partida['palabraWordix'] === $palabra) {
-            return true;
+    $jugoPartida = false;
+    foreach ($partidasGuardadas as $partida) {
+     
+        if ($partida["palabraWordix"] == $palabra && $partida["jugador"] == $nombre) {
+            $jugoPartida =  true;
         }
     }
-
-    return false;
+    return $jugoPartida;
 }
