@@ -448,9 +448,8 @@ function seleccionarOpcion(){
  * @param string $palabra Palabra Wordix a verificar
  * @return bool True si el jugador ya jugó con la palabra, False si no
  */
-function jugadorYaJugoConPalabra($nombre, $palabra) {
-    global $partidasGuardadas;
-    foreach ($partidasGuardadas as $partida) {
+function jugadorYaJugoConPalabra($nombre, $palabra,$partidasGuardadas) {
+ foreach ($partidasGuardadas as $partida) {
         if ($partida['jugador'] === $nombre && $partida['palabraWordix'] === $palabra) {
             return true;
         }

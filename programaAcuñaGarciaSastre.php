@@ -47,7 +47,7 @@ function cargarColeccionPalabras()
 //Inicialización de variables:
 $palabrasWordix=cargarColeccionPalabras();
 $siPalabra=false;
-$partidasGuardadas = [];
+$partidasGuardadas = [$ejemploPartidas];
 
 //Proceso:
 
@@ -63,7 +63,7 @@ do {
             $numeroElegido =trim(fgets(STDIN)) -1 ;
             if ($numeroElegido>=0 && $numeroElegido < $totalPalabrasWordix){
                 $palabraAdivinar = $palabrasWordix[$numeroElegido];
-                if(jugadorYaJugoConPalabra($nombreJugador,$palabraAdivinar)){
+                if(jugadorYaJugoConPalabra($nombreJugador,$palabraAdivinar,$partidasGuardadas)){
                     echo"ya jugaste con esta palabra\n";
                 }else{
                 $partidasGuardadas[]=jugarWordix($palabraAdivinar, $nombreJugador) ;
@@ -76,7 +76,7 @@ do {
             echo "Ingrese su nombre: \n";
             $nombreJugador = trim(fgets(STDIN));
             $indiceAleatorio = array_rand($palabrasWordix);
-            while (jugadorYaJugoConPalabra($nombreJugador,$indiceAleatorio)){
+            while (jugadorYaJugoConPalabra($nombreJugador,$indiceAleatorio,$partidasGuardadas)){
                 $indiceAleatorio = array_rand($palabrasWordix);
             }
                     $partidasGuardadas[]=jugarWordix($palabraAleatoria, $nombreJugador);
