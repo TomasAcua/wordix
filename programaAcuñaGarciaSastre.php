@@ -41,8 +41,10 @@ function cargarColeccionPalabras()
 /**************************************/
 
 //Declaración de variables:
-//string nombreJugador, $palabrasAdivinar, $palabraNueva
+//string $nombreJugador, $palabraAdivinar, $palabraNueva
 //boolean $siPalabra
+//array $palabrasWordix,$partidasGuardadas, $partida
+//int $opcion, $totalPalabrasWordix, $numeroElegido, $numeroPartida, $indiceAleatorio
 
 //Inicialización de variables:
 $palabrasWordix=cargarColeccionPalabras();
