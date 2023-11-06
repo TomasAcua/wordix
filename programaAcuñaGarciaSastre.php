@@ -127,9 +127,7 @@ do {
             $siPalabra= in_array($palabraNueva,$palabrasWordix);
 
             }while($siPalabra);//"in_array" recorre el arreglo y determina si el string esta o no dentro del arreglo
-            $totalPalabrasWordix=count($palabrasWordix);
-            $palabrasWordix[$totalPalabrasWordix]=$palabraNueva;//preguntar si hay que mantenerlo entre ejecuciones
-            echo "¡¡¡ La palabra a sido agregada exitosamente !!! \n";
+            $palabrasWordix= agregarPalabra( $palabrasWordix,$palabraNueva);
             break;
         case 8:
             echo "¡Hasta luego!";

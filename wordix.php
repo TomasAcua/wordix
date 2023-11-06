@@ -462,3 +462,16 @@ function jugadorYaJugoConPalabra($nombre, $palabra,$partidasGuardadas) {
     }
     return $jugoPartida;
 }
+/**
+ * ingresa la palabra nueva y la coleccion de palabras, y retorna la coleccion de palabras con la palabra nueva
+ * @param array $palabraWordix
+ * @param string $palabraNueva
+ * @return array
+ */
+function agregarPalabra($palabrasWordix,$palabraNueva){
+    //entero $totalPalarbasWordix
+    $totalPalabrasWordix=count($palabrasWordix);
+            $palabrasWordix[$totalPalabrasWordix]=$palabraNueva;//preguntar si hay que mantenerlo entre ejecuciones
+            echo "¡¡¡ La palabra a sido agregada exitosamente !!! \n";
+        return $palabrasWordix;
+}
