@@ -136,8 +136,3 @@ do {
             echo "Opción no válida. Por favor, ingrese una opción válida.\n";
     }
  }while ($opcion!= 8);
-
-
-
-
-
