@@ -107,8 +107,9 @@ do {
 
             break;
         case 4:
-            // Implementar la lógica para mostrar la primer partida ganadora de un jugador
-            // ...
+            echo "Ingrese el nombre del jugador: \n";
+            $nombreJugador=trim(fgets(STDIN));
+            primeraGanada($nombreJugador,$partidasGuardadas);
             break;
         case 5:
             // Implementar la lógica para mostrar el resumen de un jugador

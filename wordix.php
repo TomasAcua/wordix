@@ -475,3 +475,32 @@ function agregarPalabra($palabrasWordix,$palabraNueva){
             echo "¡¡¡ La palabra a sido agregada exitosamente !!! \n";
         return $palabrasWordix;
 }
+/**
+ * ingresa el nombre de jugador y las partidas guardadas, si el jugador ya jugo muestra un menu con datos sino solo dice que no jugo.
+ * @param string $nombreJugador
+ * @param array $partidasGuardadas
+ * @return //sin retorno
+ */
+
+function primeraGanada($nombreJugador, $partidasGuardadas){
+    //array $primeraPartidaGanadora
+    //int $numPartida
+    $numPartida= 0;
+    $primeraPartidaGanadora = null;
+     foreach ($partidasGuardadas as $partida) {
+        $numPartida++;
+         if ($partida["jugador"] == $nombreJugador && $partida["puntaje"] > 0) {
+    
+         $primeraPartidaGanadora = $partida;
+         
+         break;
+         }
+    }
+
+         if ($primeraPartidaGanadora !== null) {
+             echo "***********************************\n Partida Wordix $numPartida: Palabra {$primeraPartidaGanadora["palabraWordix"]}\n Jugador: $nombreJugador\n Puntaje: {$primeraPartidaGanadora["puntaje"]}\n Intento: {$primeraPartidaGanadora["intentos"]}\n***********************************\n ";
+         } else {
+             echo "El jugador $nombreJugador no ha ganado ninguna partida.\n";
+         }
+     
+    }
