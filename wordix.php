@@ -504,6 +504,22 @@ function primeraGanada($nombreJugador, $partidasGuardadas){
          }
      
     }
+   /**
+     * Función de comparación para uasort
+     *
+     * @param array $partida1 Primera partida a comparar
+     * @param array $partida2 Segunda partida a comparar
+     * @return int Resultado de la comparación (-1, 0, 1)
+     */
+    function compararPartidas($partida01, $partida02) {
+        $numPartida= 0;
+        if ($partida01['jugador'] == $partida02['jugador']) {
+            $numPartida = strcmp($partida01['palabraWordix'], $partida02['palabraWordix']);
+        }else {
+        $numPartida= strcmp($partida01['jugador'], $partida02['jugador']);
+        }
+        return $numPartida;
+    }
     /*
     @param string $jugadorNombre
     @param array $partidasGuardadas
