@@ -113,7 +113,9 @@ do {
             break;
         case 5:
             // Implementar la lógica para mostrar el resumen de un jugador
-            // ...
+            echo ("Ingrese el nombre del jugador que desea chequear: ");
+            $nombreJugador = trim(fgets(STDIN));
+            estadisticasJugador($nombreJugador,$partidasGuardadas);  
             break;
         case 6:
             // Implementar la lógica para mostrar el listado de partidas ordenadas por jugador y palabra
