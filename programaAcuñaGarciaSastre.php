@@ -66,7 +66,7 @@ do {
             $numeroElegido =trim(fgets(STDIN)) -1 ;
             if ($numeroElegido>=0 && $numeroElegido < $totalPalabrasWordix){
                 $palabraAdivinar = $palabrasWordix[$numeroElegido];
-                if(jugadorYaJugoConPalabra($nombreJugador,$palabraAdivinar,$partidasGuardadas, $palabrasWordix)){
+                if(jugadorYaJugoConPalabra($nombreJugador,$palabraAdivinar,$partidasGuardadas,)){
                     echo"ya jugaste con esta palabra\n";
                 }else{
                 $partidasGuardadas[count($partidasGuardadas)]=jugarWordix($palabraAdivinar, $nombreJugador) ;
@@ -117,7 +117,10 @@ do {
             break;
         case 6:
             // Implementar la lógica para mostrar el listado de partidas ordenadas por jugador y palabra
-            // ...
+            uasort($partidasGuardadas, 'compararPartidas');
+
+            echo "Listado de partidas ordenadas por jugador y por palabra:\n";
+            print_r($partidasGuardadas);
             break;
         case 7:
             // se pide una palabra, si la palabra ya esta dentro de la coleccion se vuevle a pedir otra
