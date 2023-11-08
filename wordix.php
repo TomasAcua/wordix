@@ -545,12 +545,12 @@ function estadisticasJugador($jugadorNombre, $partidasGuardadas){
         }
  
     }
-    echo("************************************");
+    echo("************************************\n");
     echo("Jugador: $jugadorNombre\n");
     echo("Partidas: $cantPartidas\n");
     echo("Puntaje Total: $totalPuntaje\n");
     echo("Porcentaje de victorias: $porcentajeVictorias\n");
     echo("Adivinadas: $victorias\n");
-    echo("Intento 1: $int1 \n Intento 2: $int2\n Intento 3: $int3\n Intento 4: $int4\n Intento 5: $int5\n Intento 6: $int6\n");
-    echo("************************************");
+    echo("      Intento 1: $int1\n      Intento 2: $int2\n      Intento 3: $int3\n      Intento 4: $int4\n      Intento 5: $int5\n      Intento 6: $int6\n");
+    echo("************************************\n");
 }
