@@ -156,8 +156,7 @@ function esPalabra($cadena)
  * pide una palabra de cinco letras, si es de cinco letras la retorna sino vuelve a pedir otra
  *  @return string
  */
-function leerPalabra5Letras()
-{
+function leerPalabra5Letras(){
     //string $palabra
     echo "Ingrese una palabra de 5 letras:\n ";
     $palabra = trim(fgets(STDIN));
@@ -314,8 +313,9 @@ function actualizarTeclado($teclado, $estructuraPalabraIntento)
  * @param array $estructuraPalabraIntento
  * @return bool
  */
-function esIntentoGanado($estructuraPalabraIntento)
-{
+function esIntentoGanado($estructuraPalabraIntento){
+    // int $i, $cantLetras
+    //bool $ganado
     $cantLetras = count($estructuraPalabraIntento);
     $i = 0;
 
@@ -338,8 +338,10 @@ function esIntentoGanado($estructuraPalabraIntento)
  * @param string $palabraIntento Palabra intento del jugador en mayúsculas.
  * @return int Puntaje obtenido en el intento.
  */
-function obtenerPuntajeWordix($nroIntento, $palabraIntento)  
-{ $puntaje= 7-$nroIntento;
+function obtenerPuntajeWordix($nroIntento, $palabraIntento){ 
+    // int $puntaje 
+    //array puntajeLetras
+    $puntaje= 7-$nroIntento;
     $puntajesLetras = [
         'A' => 1, 'E' => 1, 'I' => 1, 'O' => 1, 'U' => 1,
         'B' => 2, 'C' => 2, 'D' => 2, 'F' => 2, 'G' => 2, 'H' => 2, 'J' => 2, 'K' => 2, 'L' => 2, 'M' => 2,
@@ -402,7 +404,12 @@ function jugarWordix($palabraWordix, $nombreUsuario)
 
     return $partida;
 }
+/**
+ * se cargan ejemplos de partidas
+ * @return array 
+ */
 function cargarPartidas(){
+    //array $ejemploPartidas
     $ejemploPartidas = [];
         $partida01 = [ "palabraWordix" => "QUESO", "jugador" => "Emilia",  "intentos" => 0, "puntaje" => 0];
         $partida02 = [ "palabraWordix" => "CASAS", "jugador" => "Adriano", "intentos" => 3, "puntaje" => 14];
@@ -420,9 +427,14 @@ function cargarPartidas(){
     
     return $ejemploPartidas;
 }
+/**  Muestra el menú de opciones
+ * @return int
+ */
 function seleccionarOpcion(){
+    // int $opcion
+    //bool $opcionValida
     do{
-        // Mostrar el menú de opciones
+      
         echo "Menú de opciones:\n";
         echo "1) Jugar al wordix con una palabra elegida\n";
         echo "2) Jugar al wordix con una palabra aleatoria\n";
@@ -453,6 +465,7 @@ function seleccionarOpcion(){
  * @return bool True si el jugador ya jugó con la palabra, False si no
  */
 function jugadorYaJugoConPalabra($nombre, $palabra,$partidasGuardadas) {
+    //bool $jugoPartida
     $jugoPartida = false;
     foreach ($partidasGuardadas as $partida) {
      
@@ -476,19 +489,17 @@ function agregarPalabra($palabrasWordix,$palabraNueva){
         return $palabrasWordix;
 }
 /**
- * ingresa el nombre de jugador y las partidas guardadas, si el jugador ya jugo muestra un menu con datos sino solo dice que no jugo.
+ * ingresa el nombre de jugador y las partidas guardadas, si el jugador ya jugo re retorna la info, sino se retorna un -1
  * @param string $nombreJugador
  * @param array $partidasGuardadas
- * @return //sin retorno
+ * @return array
  */
 
 function primeraGanada($nombreJugador, $partidasGuardadas){
     //array $primeraPartidaGanadora
-    //int $numPartida
-    $numPartida= 0;
     $primeraPartidaGanadora = null;
      foreach ($partidasGuardadas as $partida) {
-        $numPartida++;
+        
          if ($partida["jugador"] == $nombreJugador && $partida["puntaje"] > 0) {
     
          $primeraPartidaGanadora = $partida;
@@ -497,12 +508,10 @@ function primeraGanada($nombreJugador, $partidasGuardadas){
          }
     }
 
-         if ($primeraPartidaGanadora !== null) {
-             echo "***********************************\n Partida Wordix $numPartida: Palabra {$primeraPartidaGanadora["palabraWordix"]}\n Jugador: $nombreJugador\n Puntaje: {$primeraPartidaGanadora["puntaje"]}\n Intento: {$primeraPartidaGanadora["intentos"]}\n***********************************\n ";
-         } else {
-             echo "El jugador $nombreJugador no ha ganado ninguna partida.\n";
+         if ($primeraPartidaGanadora == null) {
+            $primeraPartidaGanadora= -1;
          }
-     
+            return $primeraPartidaGanadora;
     }
    /**
      * Función de comparación para uasort
@@ -512,6 +521,7 @@ function primeraGanada($nombreJugador, $partidasGuardadas){
      * @return int Resultado de la comparación (-1, 0, 1)
      */
     function compararPartidas($partida01, $partida02) {
+        //int $numPartida
         $numPartida= 0;
         if ($partida01['jugador'] == $partida02['jugador']) {
             $numPartida = strcmp($partida01['palabraWordix'], $partida02['palabraWordix']);
@@ -521,6 +531,7 @@ function primeraGanada($nombreJugador, $partidasGuardadas){
         return $numPartida;
     }
     /*
+    En esta funcion se muestran las estadisticas de el jugador ingresado
     @param string $jugadorNombre
     @param array $partidasGuardadas
     @return

@@ -21,6 +21,7 @@ include_once("wordix.php");
  * @return array
  */
 function cargarColeccionPalabras()
+//array $coleccionPalabras
 {
     $coleccionPalabras = [
         "MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
@@ -41,7 +42,7 @@ function cargarColeccionPalabras()
 /**************************************/
 
 //Declaración de variables:
-//string $nombreJugador, $palabraAdivinar, $palabraNueva
+//string $nombreJugador, $palabraAdivinar, $palabraNueva, $palabraAleatoria
 //boolean $siPalabra
 //array $palabrasWordix,$partidasGuardadas, $partida
 //int $opcion, $totalPalabrasWordix, $numeroElegido, $numeroPartida, $indiceAleatorio
@@ -60,27 +61,36 @@ do {
     switch ($opcion) {
         case 1:
             // Implementar la lógica para jugar con una palabra elegida
+            
+            $repetir=false;
             echo"ingrese su nombre: \n";
             $nombreJugador = trim(fgets(STDIN));
-            echo"ingrese el numero de palabra entre 1 y $totalPalabrasWordix para jugar: \n";
-            $numeroElegido =trim(fgets(STDIN)) -1 ;
-            if ($numeroElegido>=0 && $numeroElegido < $totalPalabrasWordix){
-                $palabraAdivinar = $palabrasWordix[$numeroElegido];
-                if(jugadorYaJugoConPalabra($nombreJugador,$palabraAdivinar,$partidasGuardadas,)){
-                    echo"ya jugaste con esta palabra\n";
+            do{
+                $yaJugo=false;
+                echo"ingrese el numero de palabra entre 1 y $totalPalabrasWordix para jugar: \n";
+                $numeroElegido =trim(fgets(STDIN)) -1 ;
+                if ($numeroElegido>=0 && $numeroElegido < $totalPalabrasWordix){
+                    $palabraAdivinar = $palabrasWordix[$numeroElegido];
+                    if(jugadorYaJugoConPalabra($nombreJugador,$palabraAdivinar,$partidasGuardadas,)){
+                        echo"ya jugaste con esta palabra\n";
+                        $repetir=true;
+                    }else{
+                        $partidasGuardadas[count($partidasGuardadas)]=jugarWordix($palabraAdivinar, $nombreJugador) ;
+                    }
                 }else{
-                $partidasGuardadas[count($partidasGuardadas)]=jugarWordix($palabraAdivinar, $nombreJugador) ;
-                }
-            }else{
-                echo"OJO, tiene que ingresar un valor entre 1 y $totalPalabrasWordix \n";}
+                echo"OJO, tiene que ingresar un valor entre 1 y $totalPalabrasWordix \n";
+                $repetir=true;}
+            }while($repetir==true);
             break;
         case 2:
             // Implementar la lógica para jugar con una palabra aleatoria
             echo "Ingrese su nombre: \n";
             $nombreJugador = trim(fgets(STDIN));
             $indiceAleatorio = array_rand($palabrasWordix);
+            $palabraAleatoria = $palabrasWordix[$indiceAleatorio];
             while (jugadorYaJugoConPalabra($nombreJugador,$indiceAleatorio,$partidasGuardadas)){
                 $indiceAleatorio = array_rand($palabrasWordix);
+                $palabraAleatoria = $palabrasWordix[$indiceAleatorio];
             }
                     $partidasGuardadas[count($partidasGuardadas)]=jugarWordix($palabraAleatoria, $nombreJugador);
                   
@@ -109,7 +119,12 @@ do {
         case 4:
             echo "Ingrese el nombre del jugador: \n";
             $nombreJugador=trim(fgets(STDIN));
-            primeraGanada($nombreJugador,$partidasGuardadas);
+            $partida=primeraGanada($nombreJugador,$partidasGuardadas);
+            if ($partida !== -1) {
+                echo "***********************************\n Partida Wordix: Palabra {$partida["palabraWordix"]}\n Jugador: $nombreJugador\n Puntaje: {$partida["puntaje"]}\n Intento: {$partida["intentos"]}\n***********************************\n ";
+            } else {
+                echo "El jugador $nombreJugador no ha ganado ninguna partida.\n";
+            }
             break;
         case 5:
             // Implementar la lógica para mostrar el resumen de un jugador
