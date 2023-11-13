@@ -65,13 +65,12 @@ do {
             $repetir=false;
             echo"ingrese su nombre: \n";
             $nombreJugador = trim(fgets(STDIN));
-            do{
                 $yaJugo=false;
                 echo"ingrese el numero de palabra entre 1 y $totalPalabrasWordix para jugar: \n";
                 $numeroElegido =trim(fgets(STDIN)) -1 ;
                 if ($numeroElegido>=0 && $numeroElegido < $totalPalabrasWordix){
                     $palabraAdivinar = $palabrasWordix[$numeroElegido];
-                    if(jugadorYaJugoConPalabra($nombreJugador,$palabraAdivinar,$partidasGuardadas,)){
+                    if(jugadorYaJugoConPalabra($nombreJugador,$palabraAdivinar,$partidasGuardadas)){
                         echo"ya jugaste con esta palabra\n";
                         $repetir=true;
                     }else{
@@ -79,8 +78,7 @@ do {
                     }
                 }else{
                 echo"OJO, tiene que ingresar un valor entre 1 y $totalPalabrasWordix \n";
-                $repetir=true;}
-            }while($repetir==true);
+            }
             break;
         case 2:
             // Implementar la lógica para jugar con una palabra aleatoria
@@ -128,9 +126,24 @@ do {
             break;
         case 5:
             // Implementar la lógica para mostrar el resumen de un jugador
+            //array $datos
             echo ("Ingrese el nombre del jugador que desea chequear: ");
             $nombreJugador = trim(fgets(STDIN));
-            estadisticasJugador($nombreJugador,$partidasGuardadas);  
+            if()
+            while($nombreJugador != $partidasGuardadas[$partida["jugador"]]){
+                $partida++;
+                echo("El jugador $nombreJugador aun no jugo ninguna partida");
+            }else{
+            $datos=estadisticasJugador($nombreJugador,$partidasGuardadas);
+            echo("************************************\n");
+            echo("Jugador: $datos[jugador]\n");
+            echo("Partidas: $datos[cantPartidas]\n");
+            echo("Puntaje Total: $datos[totalPuntaje]\n");
+            echo("Porcentaje de victorias: $datos[porcentajeVictorias]\n");
+            echo("Adivinadas: $datos[victorias]\n");
+            echo("      Intento 1: $datos[int1]\n      Intento 2: $datos[int2]\n      Intento 3: $datos[int3]\n      Intento 4: $datos[int4]\n      Intento 5: $datos[int5]\n      Intento 6: $datos[int6]\n");
+            echo("************************************\n");
+            }
             break;
         case 6:
             // Implementar la lógica para mostrar el listado de partidas ordenadas por jugador y palabra

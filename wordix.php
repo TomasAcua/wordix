@@ -539,46 +539,44 @@ function agregarPalabra($palabrasWordix,$palabraNueva){
     */
 function estadisticasJugador($jugadorNombre, $partidasGuardadas){
     //int $cantPartidas, $totalPuntaje, $victorias, $porcentajeVictorias, $int1, $int2, $int3, int4, int5, int6
-    $cantPartidas = 0; $totalPuntaje = 0; $porcentajeVictorias = 0; $victorias = 0; $int1 = 0; $int2 = 0; $int3 = 0; $int4 = 0; $int5 = 0; $int6 = 0;
+    //$cantPartidas = 0; $totalPuntaje = 0; $porcentajeVictorias = 0; $victorias = 0; $int1 = 0; $int2 = 0; $int3 = 0; $int4 = 0; $int5 = 0; $int6 = 0;
+    $resumenjugador=[
+        "jugador" => $jugadorNombre, "cantPartidas" => 0, "totalPuntaje" => 0, "victorias" => 0, "porcentajeVictorias" => 0,
+        "int1" => 0, "int2" => 0, "int3" => 0, "int4" => 0, "int5" => 0, "int6" => 0
+    ];
     foreach($partidasGuardadas as $partida){
-        if($partida["jugador"] == $jugadorNombre){
-            $cantPartidas++;
+        if($partida["jugador"] == $resumenjugador["jugador"]){
+            $resumenjugador["cantPartidas"]++;
             if($partida["intentos"]== 1){
-                $int1++;
-                $victorias++;
-                $totalPuntaje = $totalPuntaje + $partida["puntaje"];
+                $resumenjugador["int1"]++;
+                $resumenjugador["victorias"]++;
+                $resumenjugador["totalPuntaje"] = $resumenjugador["totalPuntaje"] + $partida["puntaje"];
             }elseif($partida["intentos"]== 2){
-                $int2++;
-                $victorias++;
-                $totalPuntaje = $totalPuntaje + $partida["puntaje"];
+                $resumenjugador["int2"]++;
+                $resumenjugador["victorias"]++;
+                $resumenjugador["totalPuntaje"] = $resumenjugador["totalPuntaje"] + $partida["puntaje"];
             }elseif($partida["intentos"]== 3){
-                $int3++;
-                $victorias++;
-                $totalPuntaje = $totalPuntaje + $partida["puntaje"];
+                $resumenjugador["int3"]++;
+                $resumenjugador["victorias"]++;
+                $resumenjugador["totalPuntaje"] = $resumenjugador["totalPuntaje"] + $partida["puntaje"];
             }elseif($partida["intentos"]== 4){
-                $int4++;
-                $victorias++;
-                $totalPuntaje = $totalPuntaje + $partida["puntaje"];
+                $resumenjugador["int4"]++;
+                $resumenjugador["victorias"]++;
+                $resumenjugador["totalPuntaje"] = $resumenjugador["totalPuntaje"] + $partida["puntaje"];
             }elseif($partida["intentos"]== 5){
-                $int5++;
-                $victorias++;
-                $totalPuntaje = $totalPuntaje + $partida["puntaje"];
-            }else{
-                ($partida["intentos"]== 6);
-                $int6++;
-                $victorias++;
-                $totalPuntaje = $totalPuntaje + $partida["puntaje"];
-            }    
-            $porcentajeVictorias = $cantPartidas % $victorias;       
+                $resumenjugador["int5"]++;
+                $resumenjugador["victorias"]++;
+                $resumenjugador["totalPuntaje"] = $resumenjugador["totalPuntaje"] + $partida["puntaje"];
+            }elseif($partida["intentos"]== 6){
+                if(esIntentoGanado($partida)){
+                $resumenjugador["int6"]++;
+                $resumenjugador["victorias"]++;
+                $resumenjugador["totalPuntaje"] = $resumenjugador["totalPuntaje"] + $partida["puntaje"];
+            }  
         }
- 
+            $resumenjugador["porcentajeVictorias"] = ($resumenjugador["victorias"] / $resumenjugador["cantPartidas"]) * 100;       
+        } 
     }
-    echo("************************************\n");
-    echo("Jugador: $jugadorNombre\n");
-    echo("Partidas: $cantPartidas\n");
-    echo("Puntaje Total: $totalPuntaje\n");
-    echo("Porcentaje de victorias: $porcentajeVictorias\n");
-    echo("Adivinadas: $victorias\n");
-    echo("      Intento 1: $int1\n      Intento 2: $int2\n      Intento 3: $int3\n      Intento 4: $int4\n      Intento 5: $int5\n      Intento 6: $int6\n");
-    echo("************************************\n");
+return $resumenjugador;
 }
+
