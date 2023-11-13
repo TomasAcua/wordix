@@ -125,26 +125,37 @@ do {
             }
             break;
         case 5:
-            // Implementar la lógica para mostrar el resumen de un jugador
-            //array $datos
-            echo ("Ingrese el nombre del jugador que desea chequear: ");
-            $nombreJugador = trim(fgets(STDIN));
-            if()
-            while($nombreJugador != $partidasGuardadas[$partida["jugador"]]){
-                $partida++;
-                echo("El jugador $nombreJugador aun no jugo ninguna partida");
-            }else{
-            $datos=estadisticasJugador($nombreJugador,$partidasGuardadas);
-            echo("************************************\n");
-            echo("Jugador: $datos[jugador]\n");
-            echo("Partidas: $datos[cantPartidas]\n");
-            echo("Puntaje Total: $datos[totalPuntaje]\n");
-            echo("Porcentaje de victorias: $datos[porcentajeVictorias]\n");
-            echo("Adivinadas: $datos[victorias]\n");
-            echo("      Intento 1: $datos[int1]\n      Intento 2: $datos[int2]\n      Intento 3: $datos[int3]\n      Intento 4: $datos[int4]\n      Intento 5: $datos[int5]\n      Intento 6: $datos[int6]\n");
-            echo("************************************\n");
-            }
-            break;
+                // Implementar la lógica para mostrar el resumen de un jugador
+                echo ("Ingrese el nombre del jugador que desea chequear: ");
+                $nombreJugador = trim(fgets(STDIN));
+            
+                $jugadorEncontrado = false;
+                $indicePartida = 0;
+            
+                while ($indicePartida < count($partidasGuardadas) && !$jugadorEncontrado) {
+                    $partida = $partidasGuardadas[$indicePartida];
+                    
+                    if ($nombreJugador == $partida["jugador"]) {
+                        $jugadorEncontrado = true;
+                    }
+            
+                    $indicePartida++;
+                }
+            
+                if (!$jugadorEncontrado) {
+                    echo "El jugador $nombreJugador aún no ha jugado ninguna partida.\n";
+                } else {
+                    $datos = estadisticasJugador($nombreJugador, $partidasGuardadas);
+                    echo("************************************\n");
+                    echo("Jugador: $datos[jugador]\n");
+                    echo("Partidas: $datos[cantPartidas]\n");
+                    echo("Puntaje Total: $datos[totalPuntaje]\n");
+                    echo("Porcentaje de victorias: $datos[porcentajeVictorias]\n");
+                    echo("Adivinadas: $datos[victorias]\n");
+                    echo("      Intento 1: $datos[int1]\n      Intento 2: $datos[int2]\n      Intento 3: $datos[int3]\n      Intento 4: $datos[int4]\n      Intento 5: $datos[int5]\n      Intento 6: $datos[int6]\n");
+                    echo("************************************\n");
+                }
+                break;
         case 6:
             // Implementar la lógica para mostrar el listado de partidas ordenadas por jugador y palabra
             uasort($partidasGuardadas, 'compararPartidas');
