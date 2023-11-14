@@ -501,7 +501,7 @@ function agregarPalabra($palabrasWordix,$palabraNueva){
     $encontrada = false;
 
     foreach ($partidasGuardadas as $partida) {
-        if ($partida["jugador"] == $nombreJugador && $partida["puntaje"] > 0) {
+        if (!$encontrada && $partida["jugador"] == $nombreJugador && $partida["puntaje"] > 0) {
             $primeraPartidaGanadora = $partida;
            
             $encontrada = true; // Marcar que se encontró la primera partida ganadora
