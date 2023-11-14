@@ -45,7 +45,7 @@ function cargarColeccionPalabras()
 //string $nombreJugador, $palabraAdivinar, $palabraNueva, $palabraAleatoria
 //boolean $siPalabra
 //array $palabrasWordix,$partidasGuardadas, $partida
-//int $opcion, $totalPalabrasWordix, $numeroElegido, $numeroPartida, $indiceAleatorio
+//int $opcion, $totalPalabrasWordix, $numeroElegido, $numeroPartida, $indiceAleatorio, $cantPartidas
 
 //Inicialización de variables:
 $palabrasWordix=cargarColeccionPalabras();
@@ -53,11 +53,13 @@ $siPalabra=false;
 $partidasGuardadas = [];
 $partidasGuardadas = cargarPartidas();
 
+
 //Proceso:
 
 do {
     $opcion = seleccionarOpcion();
     $totalPalabrasWordix = count($palabrasWordix);
+    $cantPartidas= count($partidasGuardadas);
     switch ($opcion) {
         case 1:
             // Implementar la lógica para jugar con una palabra elegida
@@ -92,10 +94,12 @@ do {
             break;
         case 3:
             // Implementar la lógica para mostrar una partida específica
-            echo "ingrese el numero de partida que quiere ver\n";
+            
+            echo "ingrese el numero de partida que quiere ver entre 1 y $cantPartidas \n";
             $numeroPartida = trim(fgets(STDIN));
             $numeroPartida = $numeroPartida-1;
-            if($numeroPartida>count($partidasGuardadas)|| $numeroPartida<0){
+
+            if($numeroPartida+1>count($partidasGuardadas)|| $numeroPartida<0){
                 echo "la partida no se encontro\n";
             }
             else{
