@@ -65,7 +65,7 @@ do {
             echo"ingrese su nombre: \n";
             $nombreJugador = trim(fgets(STDIN));
                 echo"ingrese el numero de palabra entre 1 y $totalPalabrasWordix para jugar: \n";
-                $numeroElegido =trim(fgets(STDIN)) -1 ;
+                $numeroElegido =trim(fgets(STDIN)) -1;
                 if ($numeroElegido>=0 && $numeroElegido < $totalPalabrasWordix){
                     $palabraAdivinar = $palabrasWordix[$numeroElegido];
                     if(jugadorYaJugoConPalabra($nombreJugador,$palabraAdivinar,$partidasGuardadas)){
@@ -95,7 +95,7 @@ do {
             echo "ingrese el numero de partida que quiere ver\n";
             $numeroPartida = trim(fgets(STDIN));
             $numeroPartida = $numeroPartida-1;
-            if($numeroPartida>count($partidasGuardadas)|| $numeroPartida<0){
+            if($numeroPartida>=count($partidasGuardadas)|| $numeroPartida<0){
                 echo "la partida no se encontro\n";
             }
             else{
