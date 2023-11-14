@@ -62,17 +62,14 @@ do {
         case 1:
             // Implementar la lógica para jugar con una palabra elegida
             
-            $repetir=false;
             echo"ingrese su nombre: \n";
             $nombreJugador = trim(fgets(STDIN));
-                $yaJugo=false;
                 echo"ingrese el numero de palabra entre 1 y $totalPalabrasWordix para jugar: \n";
                 $numeroElegido =trim(fgets(STDIN)) -1 ;
                 if ($numeroElegido>=0 && $numeroElegido < $totalPalabrasWordix){
                     $palabraAdivinar = $palabrasWordix[$numeroElegido];
                     if(jugadorYaJugoConPalabra($nombreJugador,$palabraAdivinar,$partidasGuardadas)){
                         echo"ya jugaste con esta palabra\n";
-                        $repetir=true;
                     }else{
                         $partidasGuardadas[count($partidasGuardadas)]=jugarWordix($palabraAdivinar, $nombreJugador) ;
                     }
