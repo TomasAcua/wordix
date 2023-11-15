@@ -67,8 +67,9 @@ do {
             echo"ingrese su nombre: \n";
             $nombreJugador = trim(fgets(STDIN));
                 echo"ingrese el numero de palabra entre 1 y $totalPalabrasWordix para jugar: \n";
-                $numeroElegido =trim(fgets(STDIN)) -1;
-                if ($numeroElegido>=0 && $numeroElegido < $totalPalabrasWordix){
+                $numeroElegido =trim(fgets(STDIN));
+                if ($numeroElegido>=1 && $numeroElegido <= $totalPalabrasWordix){
+                    $numeroElegido = $numeroElegido-1;
                     $palabraAdivinar = $palabrasWordix[$numeroElegido];
                     if(jugadorYaJugoConPalabra($nombreJugador,$palabraAdivinar,$partidasGuardadas)){
                         echo"ya jugaste con esta palabra\n";
