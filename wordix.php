@@ -410,7 +410,23 @@ function jugarWordix($palabraWordix, $nombreUsuario)
  */
 function cargarPartidas(){
     //array $ejemploPartidas
-    $ejemploPartidas = [];
+    $coleccion = [];
+$pa1 = ["palabraWordix" => "SUECO", "jugador" => "kleiton", "intentos" => 0, "puntaje" => 0];
+$pa2 = ["palabraWordix" => "YUYOS", "jugador" => "briba", "intentos" => 0, "puntaje" => 0];
+$pa3 = ["palabraWordix" => "HUEVO", "jugador" => "zrack", "intentos" => 3, "puntaje" => 9];
+$pa4 = ["palabraWordix" => "TINTO", "jugador" => "cabrito", "intentos" => 4, "puntaje" => 8];
+$pa5 = ["palabraWordix" => "RASGO", "jugador" => "briba", "intentos" => 0, "puntaje" => 0];
+$pa6 = ["palabraWordix" => "VERDE", "jugador" => "cabrito", "intentos" => 5, "puntaje" => 7];
+$pa7 = ["palabraWordix" => "CASAS", "jugador" => "kleiton", "intentos" => 5, "puntaje" => 7];
+$pa8 = ["palabraWordix" => "GOTAS", "jugador" => "kleiton", "intentos" => 0, "puntaje" => 0];
+$pa9 = ["palabraWordix" => "ZORRO", "jugador" => "zrack", "intentos" => 4, "puntaje" => 8];
+$pa10 = ["palabraWordix" => "GOTAS", "jugador" => "cabrito", "intentos" => 0, "puntaje" => 0];
+$pa11 = ["palabraWordix" => "FUEGO", "jugador" => "cabrito", "intentos" => 2, "puntaje" => 10];
+$pa12 = ["palabraWordix" => "TINTO", "jugador" => "briba", "intentos" => 0, "puntaje" => 0];
+
+array_push($coleccion, $pa1, $pa2, $pa3, $pa4, $pa5, $pa6, $pa7, $pa8, $pa9, $pa10, $pa11, $pa12);
+return $coleccion;
+    /*$ejemploPartidas = [];
         $partida01 = [ "palabraWordix" => "QUESO", "jugador" => "Emilia",  "intentos" => 0, "puntaje" => 0];
         $partida02 = [ "palabraWordix" => "CASAS", "jugador" => "Adriano", "intentos" => 3, "puntaje" => 14];
         $partida03 = [ "palabraWordix" => "MUJER", "jugador" => "Facu", "intentos" => 2, "puntaje" => 13];
@@ -425,7 +441,7 @@ function cargarPartidas(){
         array_push($ejemploPartidas, $partida01, $partida02, $partida03, $partida04, $partida05, $partida06, $partida07, $partida08, $partida09, $partida10);
         
     
-    return $ejemploPartidas;
+    return $ejemploPartidas; */
 }
 /**  Muestra el menú de opciones
  * @return int
@@ -467,11 +483,17 @@ function seleccionarOpcion(){
 function jugadorYaJugoConPalabra($nombre, $palabra,$partidasGuardadas) {
     //bool $jugoPartida
     $jugoPartida = false;
-    foreach ($partidasGuardadas as $partida) {
-     
+    $encontrado = false;
+    $i = 0;
+    while (!$encontrado && $i < count($partidasGuardadas)) {
+        $partida = $partidasGuardadas[$i];
+
         if ($partida["palabraWordix"] == $palabra && $partida["jugador"] == $nombre) {
-            $jugoPartida =  true;
+            $jugoPartida =  true; 
+            $encontrado = true;
         }
+
+        $i++;
     }
     return $jugoPartida;
 }
@@ -499,7 +521,7 @@ function agregarPalabra($palabrasWordix,$palabraNueva){
     //boolean $encontrada
     //int $i
     
-        $primeraPartidaGanadora = -1;
+        $primeraPartidaGanadora = -2;
         $encontrada = false;
         $i = 0;
     
@@ -509,6 +531,9 @@ function agregarPalabra($palabrasWordix,$palabraNueva){
             if ($partida["jugador"] == $nombreJugador && $partida["puntaje"] > 0) {
                 $primeraPartidaGanadora = $partida;
                 $encontrada = true; 
+            }elseif($partida["jugador"] == $nombreJugador && $partida["puntaje"] == 0){
+                $primeraPartidaGanadora = -1;
+                $encontrada = true;
             }
     
             $i++;
@@ -581,5 +606,33 @@ function estadisticasJugador($jugadorNombre, $partidasGuardadas){
         } 
     }
 return $resumenjugador;
+}
+function mostrarPartida ($partidaAMostrar,$numeroPartida){
+    $numeroPartida = $numeroPartida+1;
+    echo "Partida WORDIX $numeroPartida: palabra {$partidaAMostrar['palabraWordix']}\n";
+    echo "Jugador: {$partidaAMostrar['jugador']}\n";
+     echo "Puntaje: {$partidaAMostrar['puntaje']} puntos\n";
+     if ($partidaAMostrar['intentos'] > 0) {
+         echo "Intento: Adivinó la palabra en {$partidaAMostrar['intentos']} intentos\n";
+        } else {
+         echo "Intento: No adivinó la palabra\n";
+     }
+}
+function mostrarResumen ($datos){
+    echo("************************************\n");
+    echo("Jugador: $datos[jugador]\n");
+    echo("Partidas: $datos[cantPartidas]\n");
+    echo("Puntaje Total: $datos[totalPuntaje]\n");
+    echo("Porcentaje de victorias: $datos[porcentajeVictorias]\n");
+    echo("Adivinadas: $datos[victorias]\n");
+    echo("      Intento 1: $datos[int1]\n      Intento 2: $datos[int2]\n      Intento 3: $datos[int3]\n      Intento 4: $datos[int4]\n      Intento 5: $datos[int5]\n      Intento 6: $datos[int6]\n");
+    echo("************************************\n");
+}
+function mostrarOrdenado ($partidasGuardadas){
+    uasort($partidasGuardadas, 'compararPartidas');
+
+            echo "Listado de partidas ordenadas por jugador y por palabra:\n";
+            print_r($partidasGuardadas);
+
 }
 

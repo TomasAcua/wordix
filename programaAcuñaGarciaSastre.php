@@ -104,16 +104,7 @@ do {
                 echo "la partida no se encontro\n";
             }
             else{
-                $partida = $partidasGuardadas[$numeroPartida];
-                $numeroPartida = $numeroPartida+1;
-                echo "Partida WORDIX $numeroPartida: palabra {$partida['palabraWordix']}\n";
-                echo "Jugador: {$partida['jugador']}\n";
-                 echo "Puntaje: {$partida['puntaje']} puntos\n";
-                 if ($partida['intentos'] > 0) {
-                     echo "Intento: Adivinó la palabra en {$partida['intentos']} intentos\n";
-                    } else {
-                     echo "Intento: No adivinó la palabra\n";
-                 }
+                 mostrarPartida($partidasGuardadas[$numeroPartida],$numeroPartida);
                 }
 
             break;
@@ -121,10 +112,12 @@ do {
             echo "Ingrese el nombre del jugador: \n";
             $nombreJugador=trim(fgets(STDIN));
             $partida=primeraGanada($nombreJugador,$partidasGuardadas);
-            if ($partida !== -1) {
-                echo "***********************************\n Partida Wordix: Palabra {$partida["palabraWordix"]}\n Jugador: $nombreJugador\n Puntaje: {$partida["puntaje"]}\n Intento: {$partida["intentos"]}\n***********************************\n ";
-            } else {
+            if ($partida == -1) {
                 echo "El jugador $nombreJugador no ha ganado ninguna partida.\n";
+            } elseif($partida == -2 ) {
+                echo "El jugador $nombreJugador no existe.\n";
+            }else{
+                echo "***********************************\n Partida Wordix: Palabra {$partida["palabraWordix"]}\n Jugador: $nombreJugador\n Puntaje: {$partida["puntaje"]}\n Intento: {$partida["intentos"]}\n***********************************\n ";
             }
             break;
         case 5:
@@ -152,22 +145,12 @@ do {
                     echo "El jugador $nombreJugador aún no ha jugado ninguna partida.\n";
                 } else {
                     $datos = estadisticasJugador($nombreJugador, $partidasGuardadas);
-                    echo("************************************\n");
-                    echo("Jugador: $datos[jugador]\n");
-                    echo("Partidas: $datos[cantPartidas]\n");
-                    echo("Puntaje Total: $datos[totalPuntaje]\n");
-                    echo("Porcentaje de victorias: $datos[porcentajeVictorias]\n");
-                    echo("Adivinadas: $datos[victorias]\n");
-                    echo("      Intento 1: $datos[int1]\n      Intento 2: $datos[int2]\n      Intento 3: $datos[int3]\n      Intento 4: $datos[int4]\n      Intento 5: $datos[int5]\n      Intento 6: $datos[int6]\n");
-                    echo("************************************\n");
+                    mostrarResumen($datos);
                 }
                 break;
         case 6:
             // Implementar la lógica para mostrar el listado de partidas ordenadas por jugador y palabra
-            uasort($partidasGuardadas, 'compararPartidas');
-
-            echo "Listado de partidas ordenadas por jugador y por palabra:\n";
-            print_r($partidasGuardadas);
+            mostrarOrdenado($partidasGuardadas);
             break;
         case 7:
             // se pide una palabra, si la palabra ya esta dentro de la coleccion se vuevle a pedir otra
