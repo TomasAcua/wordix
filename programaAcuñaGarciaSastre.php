@@ -142,7 +142,7 @@ do {
                 }
             
                 if (!$jugadorEncontrado) {
-                    echo "El jugador $nombreJugador aún no ha jugado ninguna partida.\n";
+                    echo "El jugador $nombreJugador no existe.\n";
                 } else {
                     $datos = estadisticasJugador($nombreJugador, $partidasGuardadas);
                     mostrarResumen($datos);
