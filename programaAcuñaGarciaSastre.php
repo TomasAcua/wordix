@@ -99,11 +99,12 @@ do {
             $numeroPartida = trim(fgets(STDIN));
             $numeroPartida = $numeroPartida-1;
 
-            if($numeroPartida+1>count($partidasGuardadas)|| $numeroPartida<0){
+            if($numeroPartida>=count($partidasGuardadas)|| $numeroPartida<0){
                 echo "la partida no se encontro\n";
             }
             else{
                 $partida = $partidasGuardadas[$numeroPartida];
+                $numeroPartida = $numeroPartida+1;
                 echo "Partida WORDIX $numeroPartida: palabra {$partida['palabraWordix']}\n";
                 echo "Jugador: {$partida['jugador']}\n";
                  echo "Puntaje: {$partida['puntaje']} puntos\n";
