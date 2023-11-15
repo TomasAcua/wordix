@@ -129,6 +129,9 @@ do {
             break;
         case 5:
                 // Implementar la lógica para mostrar el resumen de un jugador
+                //boolean $jugadorEncontrado
+                //int $indicePartida
+                //array $datos
                 echo ("Ingrese el nombre del jugador que desea chequear: ");
                 $nombreJugador = trim(fgets(STDIN));
             
