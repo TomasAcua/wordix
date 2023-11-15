@@ -494,26 +494,29 @@ function agregarPalabra($palabrasWordix,$palabraNueva){
  * @param array $partidasGuardadas
  * @return array
  */
-
- function primeraGanada($nombreJugador, $partidasGuardadas){
+    function primeraGanada($nombreJugador, $partidasGuardadas){
     //array $primeraPartidaGanadora
     //boolean $encontrada
-    $encontrada = false;
-
-    foreach ($partidasGuardadas as $partida) {
-        if (!$encontrada && $partida["jugador"] == $nombreJugador && $partida["puntaje"] > 0) {
-            $primeraPartidaGanadora = $partida;
-           
-            $encontrada = true; // Marcar que se encontró la primera partida ganadora
-        }
-    }
-
-    if (!$encontrada) {
+    //int $i
+    
         $primeraPartidaGanadora = -1;
+        $encontrada = false;
+        $i = 0;
+    
+        while (!$encontrada && $i < count($partidasGuardadas)) {
+            $partida = $partidasGuardadas[$i];
+    
+            if ($partida["jugador"] == $nombreJugador && $partida["puntaje"] > 0) {
+                $primeraPartidaGanadora = $partida;
+                $encontrada = true; 
+            }
+    
+            $i++;
+        }
+    
+        return $primeraPartidaGanadora;
     }
 
-    return $primeraPartidaGanadora;
-}
    /**
      * Función de comparación para uasort
      *
