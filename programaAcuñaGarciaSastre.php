@@ -67,8 +67,9 @@ do {
             echo"ingrese su nombre: \n";
             $nombreJugador = trim(fgets(STDIN));
                 echo"ingrese el numero de palabra entre 1 y $totalPalabrasWordix para jugar: \n";
-                $numeroElegido =trim(fgets(STDIN)) -1;
-                if ($numeroElegido>=0 && $numeroElegido < $totalPalabrasWordix){
+                $numeroElegido =trim(fgets(STDIN));
+                if ($numeroElegido>=1 && $numeroElegido <= $totalPalabrasWordix){
+                    $numeroElegido = $numeroElegido-1;
                     $palabraAdivinar = $palabrasWordix[$numeroElegido];
                     if(jugadorYaJugoConPalabra($nombreJugador,$palabraAdivinar,$partidasGuardadas)){
                         echo"ya jugaste con esta palabra\n";
@@ -99,11 +100,12 @@ do {
             $numeroPartida = trim(fgets(STDIN));
             $numeroPartida = $numeroPartida-1;
 
-            if($numeroPartida+1>count($partidasGuardadas)|| $numeroPartida<0){
+            if($numeroPartida>=count($partidasGuardadas)|| $numeroPartida<0){
                 echo "la partida no se encontro\n";
             }
             else{
                 $partida = $partidasGuardadas[$numeroPartida];
+                $numeroPartida = $numeroPartida+1;
                 echo "Partida WORDIX $numeroPartida: palabra {$partida['palabraWordix']}\n";
                 echo "Jugador: {$partida['jugador']}\n";
                  echo "Puntaje: {$partida['puntaje']} puntos\n";
@@ -127,6 +129,9 @@ do {
             break;
         case 5:
                 // Implementar la lógica para mostrar el resumen de un jugador
+                //boolean $jugadorEncontrado
+                //int $indicePartida
+                //array $datos
                 echo ("Ingrese el nombre del jugador que desea chequear: ");
                 $nombreJugador = trim(fgets(STDIN));
             
